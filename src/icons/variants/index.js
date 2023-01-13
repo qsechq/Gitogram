@@ -1,0 +1,5 @@
+export { default as HomeSvg } from './HomeSvg.vue'
+export { default as LogoutSvg } from './LogoutSvg.vue'
+export { default as ArrowSvg } from './ArrowSvg.vue'
+export { default as StarSvg } from './StarSvg.vue'
+export { default as ForkSvg } from './ForkSvg.vue'

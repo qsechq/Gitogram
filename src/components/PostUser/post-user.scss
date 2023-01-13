@@ -1,0 +1,21 @@
+.post__item-avatar {
+    width: 44px;
+    margin-right: 14px;
+}
+
+.post__item-name {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+@media(max-width:420px) {
+    .post__item-avatar {
+        width: 35px;
+        margin-right: 10px;
+    }
+
+    .post__item-name {
+        font-size: 16px;
+    }
+}
