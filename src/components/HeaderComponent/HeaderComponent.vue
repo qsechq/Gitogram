@@ -1,8 +1,8 @@
 <template>
     <div class="header">
         <div class="x-container">
-            <div class="header__main">
-                <slot name="header-main"></slot>
+            <div class="header__top">
+                <slot name="header-top"></slot>
             </div>
             <div class="header__users" v-if="$slots.content">
                 <slot name="content"></slot>
@@ -13,10 +13,10 @@
 
 <script>
 export default {
-  name: 'MyHeader'
+  name: 'HeaderComponent'
 }
 </script>
 
-<style src="./my-header.scss" lang="scss" scoped>
+<style src="./header-component.scss" lang="scss" scoped>
 
 </style>

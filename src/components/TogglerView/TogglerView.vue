@@ -9,10 +9,11 @@
 import { MyIcon } from '@/icons'
 
 export default {
-  name: 'MyPost',
+  name: 'TogglerView',
   components: {
     MyIcon
   },
+  emits: ['onToggle'],
   data () {
     return {
       isActive: false
@@ -27,6 +28,6 @@ export default {
 }
 </script>
 
-<style src="./my-toggler.scss" lang="scss" scoped>
+<style src="./toggler-view.scss" lang="scss" scoped>
 
 </style>

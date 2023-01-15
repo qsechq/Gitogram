@@ -21,7 +21,8 @@ export default {
       type: String,
       required: true
     }
-  }
+  },
+  emits: ['onPress']
 
 }
 </script>

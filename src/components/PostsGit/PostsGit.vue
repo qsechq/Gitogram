@@ -1,16 +1,18 @@
 <template>
   <li class="posts__item">
     <div class="post__item-user">
-      <post-user :avatar="avatar" :name="name"/>
+      <UserGit :avatar="avatar" :name="name" />
     </div>
     <div class="c-post__item-content">
       <slot name="post"></slot>
     </div>
     <div class="post__item-toggler">
-      <my-toggler @onToggle="onToggle"/>
+      <toggler-view @onToggle="onToggle" />
     </div>
     <div class="post__comments" v-show="isShow">
-      <comments-list></comments-list>
+      <ul class="post__comments-list">
+        <comment-item  v-for="n in 2" :key="n" />
+      </ul>
     </div>
     <div class="post__date">
       {{ date }}
@@ -20,14 +22,14 @@
 
 <script>
 /* eslint-disable */
-import { PostUser } from '@/components/PostUser'
-import { MyToggler } from '@/components/MyToggler'
-import { CommentsList } from '@/components/CommentsList'
+import { UserGit } from '@/components/UserGit'
+import { TogglerView } from '@/components/TogglerView'
+import { CommentItem } from '@/components/CommentItem'
 
 export default {
-  name: 'MyPost',
+  name: 'PostsGit',
   components: {
-    PostUser, MyToggler, CommentsList
+    UserGit, TogglerView, CommentItem
   },
   props: {
     name: {
@@ -43,19 +45,19 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       isShow: false
     }
   },
   methods: {
-    onToggle (isActive) {
-     this.isShow = isActive
+    onToggle(isActive) {
+      this.isShow = isActive
     }
   }
 }
 </script>
 
-<style src="./my-post.scss" lang="scss" scoped>
+<style src="./posts-git.scss" lang="scss" scoped>
 
 </style>

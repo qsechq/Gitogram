@@ -6,7 +6,7 @@
 <script>
 
 export default {
-  name: 'PostUser',
+  name: 'UserGit',
   props: {
     name: {
       type: String,
@@ -20,6 +20,6 @@ export default {
 }
 </script>
 
-<style src="./post-user.scss" lang="scss" scoped>
+<style src="./user-git.scss" lang="scss" scoped>
 
 </style>
