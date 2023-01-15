@@ -1,14 +1,14 @@
 <template>
-  <my-feeds />
+  <feeds-page />
 </template>
 
 <script>
-import { MyFeeds } from '@/pages/feeds'
+import { FeedsPage } from '@/pages/FeedsPage'
 
 export default {
   name: 'App',
   components: {
-    MyFeeds
+    FeedsPage
   }
 }
 </script>
