@@ -21,8 +21,9 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.active = true
-      console.log('v tike')
+      setTimeout(() => {
+        this.active = true
+      }, 0);
     })
     this.$refs.indicator.addEventListener('transitionend', this.emitOnfinish)
     console.log('esmu')
