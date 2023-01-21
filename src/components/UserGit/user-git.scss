@@ -1,12 +1,18 @@
 .post__item-avatar {
     width: 44px;
     margin-right: 14px;
+    border-radius: 50%;
 }
 
 .post__item-name {
     font-weight: 700;
     font-size: 18px;
     line-height: 18px;
+}
+
+.user__git-wrap {
+    display: flex;
+    align-items: center;
 }
 
 @media(max-width:420px) {

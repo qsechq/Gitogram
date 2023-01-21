@@ -1,12 +1,20 @@
 <template>
-    <img :src="avatar" alt="avatar" class="post__item-avatar">
+  <div class="user__git-wrap">
+    <div class="avatar__wrap">
+      <avatar-user :avatar="avatar" alt="avatar" class="post__item-avatar" />
+    </div>
     <span class="post__item-name">{{ name }}</span>
+  </div>
 </template>
 
 <script>
+import { AvatarUser } from '../AvatarUser'
 
 export default {
   name: 'UserGit',
+  components: {
+    AvatarUser
+  },
   props: {
     name: {
       type: String,

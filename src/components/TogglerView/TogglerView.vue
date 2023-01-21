@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { MyIcon } from '@/icons'
+import { MyIcon } from '../../icons'
 
 export default {
   name: 'TogglerView',

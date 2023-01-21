@@ -6,6 +6,14 @@
 
 .header__users {
     margin-top: 43px;
+    & ul {
+        display: flex;
+    }
+}
+
+
+.header__users-list {
+    display: flex;
 }
 
 @media(max-width:420px) {

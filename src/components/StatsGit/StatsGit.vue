@@ -26,17 +26,17 @@
 </template>
 
 <script>
-import { MyIcon } from '@/icons'
+import { MyIcon } from '../../icons'
 
 export default {
   name: 'StatsGit',
   props: {
     star: {
-      type: String,
+      type: Number,
       required: true
     },
     fork: {
-      type: String,
+      type: Number,
       required: true
     }
   },

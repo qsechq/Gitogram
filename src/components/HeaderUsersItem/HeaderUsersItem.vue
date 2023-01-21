@@ -2,7 +2,9 @@
 
   <a href="#" class="header__users-link" @click.prevent="$emit('onPress')">
      <div class="header__users--border">
-       <img :src="img" alt="avatar" class="header__users-avatar">
+       <div class="header__users-wrap">
+          <avatar-user :avatar="avatar"/>
+       </div>
      </div>
      <span class="header__users-name">{{ name }}</span>
   </a>
@@ -10,10 +12,16 @@
 </template>
 
 <script>
+import { AvatarUser } from '../AvatarUser'
 
 export default {
+  name: 'HeaderUserItem',
+  emits: ['onPress'],
+  components: {
+    AvatarUser
+  },
   props: {
-    img: {
+    avatar: {
       type: String,
       required: true
     },
@@ -21,9 +29,7 @@ export default {
       type: String,
       required: true
     }
-  },
-  emits: ['onPress']
-
+  }
 }
 </script>
 
@@ -41,6 +47,12 @@ export default {
   &:hover .header__users--border{
     border-color: transparent;
   }
+}
+
+.header__users-wrap img{
+    width: 80px;
+    height: 80px;
+
 }
 
 .header__users--border {

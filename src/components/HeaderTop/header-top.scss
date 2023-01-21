@@ -1,0 +1,47 @@
+.x-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__top-list {
+    display: flex;
+    align-items: center;
+}
+
+
+.header__top-item {
+    margin-right: 28px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.header__top-icon {
+    & svg {
+        color: #262626;
+        width: 24px;
+    }
+}
+
+@media(max-width: 420px) {
+    .header__top-logo {
+        width: 100px;
+    }
+
+    .header__top-icon {
+        & svg {
+            width: 18px;
+        }
+    }
+
+    .header__top-avatar {
+        width: 24px;
+    }
+
+    
+    .header__top-item {
+        margin-right: 9px;
+    }
+}

@@ -15,16 +15,17 @@
       </ul>
     </div>
     <div class="post__date">
-      {{ date }}
+      {{ formatDate }}
     </div>
   </li>
 </template>
 
 <script>
 /* eslint-disable */
-import { UserGit } from '@/components/UserGit'
-import { TogglerView } from '@/components/TogglerView'
-import { CommentItem } from '@/components/CommentItem'
+import { UserGit } from '../UserGit'
+import { TogglerView } from '../TogglerView'
+import { CommentItem } from '../CommentItem'
+import { months } from '../../replaceDate/months'
 
 export default {
   name: 'PostsGit',
@@ -53,6 +54,13 @@ export default {
   methods: {
     onToggle(isActive) {
       this.isShow = isActive
+    }
+  },
+  computed: {
+    formatDate () {
+      const date = this.date.split(/-|T/).splice(0, 3).reverse()
+      const formatDate = `${date[0]} ${months[date[1] - 1] }  `
+      return formatDate
     }
   }
 }

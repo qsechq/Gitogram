@@ -13,6 +13,14 @@
     background: #fff;
 }
 
+.x-post__content-info {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    width: fit-content;
+    border-radius: 6px; 
+}
+
 .post__info-fork {
     & .post__info-counter {
         border:none;
@@ -30,6 +38,8 @@
     margin-right: 5px;
     color: #586069;
     width: 16px;
+    display: flex;
+    align-items: center;
 }
 
 .post__info-btn:hover .post__info-icon {

@@ -1,0 +1,12 @@
+.c-button {
+    background: #31AE54;
+    border-radius: 5px;
+    width: 151px;
+    padding: 12px 0;
+   & .btn__inner{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fff;
+   }
+}
