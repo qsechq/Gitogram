@@ -1,3 +1,5 @@
+@import '../../styles.scss';
+
 .header {
     background: #FAFAFA;
     box-shadow: 0px 0.33px 0px rgba(60, 60, 67, 0.29);
@@ -16,12 +18,12 @@
     display: flex;
 }
 
-@media(max-width:420px) {
+@include phones {
     .header__users {
         margin-top: 29px;
     }
 
     .header {
-        padding-bottom: 13px;
+        padding: 32px 0 14px;
     }
 }

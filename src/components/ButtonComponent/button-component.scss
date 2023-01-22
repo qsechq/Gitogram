@@ -3,10 +3,25 @@
     border-radius: 5px;
     width: 151px;
     padding: 12px 0;
-   & .btn__inner{
     font-weight: 700;
     font-size: 16px;
-    line-height: 19px;
     color: #fff;
-   }
+
+    &::after {
+        color: green;
+        content: attr(data-hover-text);
+        font-size: 0;
+    }
+
+    &:hover {
+        background: #9E9E9E;
+        .btn__inner {
+            font-size: 0;
+        }
+
+        &::after {
+            font-size: inherit;
+            color: #fff;
+        }
+    }
 }

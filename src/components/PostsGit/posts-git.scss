@@ -1,3 +1,5 @@
+@import '../../styles.scss';
+
 .post__item-user {
     display: flex;
     align-items: center;
@@ -19,13 +21,12 @@
     text-transform: uppercase;
 }
 
-@media(max-width:420px) {
+@include phones {
     .post__item-user {
         margin-bottom: 9px;
     }
 
     .c-post__item-content {
-        padding: 25px 20px;
         margin-bottom: 9px;
     }
 

@@ -11,7 +11,9 @@
     </div>
     <div class="post__comments" v-show="isShow">
       <ul class="post__comments-list">
-        <comment-item  v-for="n in 2" :key="n" />
+        <li class="post__comments-item" v-for="n in 2" :key="n">
+          <comment-item  />
+        </li>
       </ul>
     </div>
     <div class="post__date">

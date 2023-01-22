@@ -8,7 +8,16 @@ export default {
   components: SliderComponent,
   ProgressComponent,
   ButtonComponent,
-  UserGit
+  UserGit,
+  parameters: {
+    backgrounds: {
+      default: 'grey',
+      values: [
+        { name: 'grey', value: '#333333 ' },
+        { name: 'facebook', value: '#3b5998' },
+      ],
+    },
+  },
 }
 
 const template = (args) => ({

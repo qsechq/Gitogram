@@ -1,3 +1,5 @@
+@import '../../styles.scss';
+
 .post__comments-nick {
     font-weight: 700;
     font-size: 14px;
@@ -10,7 +12,7 @@
 }
 
 .post__comments-item {
-    & p{
+    & p {
         font-size: 14px;
         line-height: 22px;
     }
@@ -21,19 +23,19 @@
     margin-bottom: 10px;
 }
 
-@media(max-width:420px) {
+@include phones {
     .post__comments-nick {
         font-size: 12px;
         line-height: 14px;
     }
 
     .post__comments-item {
-        margin-bottom:5px;
+        margin-bottom: 5px;
     }
 
-    
+
     .post__comments-item {
-        & p{
+        & p {
             font-size: 10px;
             line-height: 14px;
         }

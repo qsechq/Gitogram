@@ -16,6 +16,7 @@ export default {
   },
   computed: {
     withHoverText () {
+      console.log(this.hoverText?.length)
       return this.hoverText?.length
     }
   }

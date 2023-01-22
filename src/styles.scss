@@ -5,18 +5,25 @@ $background-gray3: #9E9E9E;
 $background-white: #FFFFFF;
 $background-green: #31AE54;
 $background-add: #262626;
+$small-width: 990px;
+$tablets: 768px;
+$phones: 420px;
 
-body, html {
-    height: 100%;
+body,
+html {
+  height: 100%;
 }
 
 .header__users {
   margin-top: 43px;
+
   &-list {
-      display: flex;
+    display: flex;
   }
+
   &-item {
     margin-right: 30px;
+
     &:last-child {
       margin-right: 0;
     }
@@ -24,80 +31,118 @@ body, html {
 }
 
 body {
-    font-family: 'Inter', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    color: $background-add;
-    font-size: 14px;
-    line-height: 1.8;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $background-add;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 #app {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  margin: 0 0;
+}
+
+svg {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.wrapper {
+  overflow: hidden;
+  min-height: 100%;
+  position: relative;
+}
+
+@mixin small-width {
+
+  @media screen and (max-width: $small-width) {
+
+    @content;
+
   }
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+}
+
+
+@mixin tablets {
+
+
+
+  @media screen and (max-width: $tablets) {
+
+    @content;
+
   }
 
-  li {
-    list-style: none;
+}
+
+
+
+
+@mixin phones {
+
+  @media screen and (max-width: $phones) {
+
+    @content;
+
   }
 
-  img {
-    display: block;
-    max-width: 100%;
-  }
+}
 
-  p {
-    margin: 0 0;
-  }
+.x-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
 
-  svg {
-    display: block;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  button {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  *, *:after, *:before {
-    box-sizing: border-box;
-    margin: 0;
-  }
-
-  .wrapper {
-    overflow: hidden;
-    min-height: 100%;
-    position: relative;
-  }
-
+@include tablets {
   .x-container {
-    max-width: 1200px;
+    max-width: 728px;
     margin: 0 auto;
-    width: 100%;
   }
+}
 
-  @media(max-width: 990px) {
-    .x-container {
-      max-width: 728px;
-      margin: 0 auto;
-    }
+@include phones {
+  .x-container {
+    max-width: 708px;
+    padding: 0 10px;
   }
-  
-  @media(max-width: 768px) {
-    .x-container {
-      max-width: 708px;
-      padding: 0 10px;
-    }
-  }
+}

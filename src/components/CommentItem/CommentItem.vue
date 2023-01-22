@@ -1,7 +1,5 @@
 <template>
-    <li class="post__comments-item">
-      <p><span class="post__comments-nick">joshua_l</span>Enable performance measuring in production, at the user's request</p>
-    </li>
+    <p><span class="post__comments-nick">joshua_l</span>Enable performance measuring in production, at the user's request</p>
 </template>
 
 <script>
