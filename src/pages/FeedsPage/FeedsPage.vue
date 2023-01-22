@@ -124,6 +124,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../styles.scss";
 .header__users-list {
     display: flex;
     justify-content: space-between;
@@ -135,7 +136,7 @@ export default {
     margin: 0 auto;
 }
 
-@media(max-width:990px) {
+@include small-width {
     .container {
         max-width: 728px;
         margin: 0 auto;
@@ -158,7 +159,7 @@ export default {
 
 }
 
-@media(max-width:768px) {
+@include tablets {
     .container {
         max-width: 708px;
         padding: 0 10px;
@@ -167,7 +168,7 @@ export default {
 
 }
 
-@media(max-width:420px) {
+@include phones {
     .container {
         max-width: 708px;
         padding: 0 10px;
