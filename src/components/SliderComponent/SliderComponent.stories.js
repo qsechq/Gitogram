@@ -24,17 +24,24 @@ const template = (args) => ({
   components: {
     SliderComponent, ProgressComponent, ButtonComponent, UserGit
   },
-  setup () {
+  setup() {
     return { args }
   },
   template: `
-  <SliderComponent v-bind="args"></SliderComponent>
+  <SliderComponent style="margin-left: 50px" v-bind="args"></SliderComponent>
   `
 })
 
 export const Default = template.bind({})
 
 Default.args = {
-  avatar: require('../../assets/avatar.png'),
-  name: 'test'
+  active: true,
+  loading: false,
+  startProgress: true,
+  btnsShow: ['next', 'prev'],
+    data: {
+      name: 'test',
+      avatar: require('../../assets/avatar.png'),
+      id: 1
+    }
 }

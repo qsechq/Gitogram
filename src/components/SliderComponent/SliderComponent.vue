@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="slider__button">
-      <button-component>
+      <button-component data-hover-text="Unfollow">
         Follow
       </button-component>
     </div>

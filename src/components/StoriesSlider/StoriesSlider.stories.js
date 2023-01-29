@@ -32,5 +32,7 @@ export const Default = template.bind({})
 
 Default.args = {
   avatar: require('../../assets/avatar.png'),
-  name: 'test'
+  name: 'test',
+  initialSlide: undefined,
+
 }
