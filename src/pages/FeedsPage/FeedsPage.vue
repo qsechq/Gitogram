@@ -6,11 +6,11 @@
                     <header-top />
                 </div>
             </template>
-            <template #content v-if="users.length">
+            <template #content v-if="trendings.length">
                 <div class="header__users">
                     <ul class="header__users-list">
-                        <li class="header__users-item" v-for="user in users" :key="user.id" :id="user.id">
-                            <header-users-item :avatar="user.img" :name="user.name" @onPress="fetchUserName(user)" />
+                        <li class="header__users-item" v-for="user in trendings" :key="user.id" :id="user.id">
+                                <header-users-item :avatar="user.owner.avatar_url" :name="user.owner.login" @onPress="$router.push({name: 'stories', params: { initialSlide: user.id } })"/>
                         </li>
                     </ul>
                 </div>
@@ -20,7 +20,7 @@
     <div class="posts">
         <div class="container">
             <ul class="posts__list">
-                <posts-git v-for="post in posts" :key="post.id" :id="post.id" :name="post.owner.login"
+                <posts-git v-for="post in trendings" :key="post.id" :id="post.id" :name="post.owner.login"
                     :avatar="post.owner.avatar_url" :date="post.created_at">
                     <template #post>
                         <div class="post__item-content">
@@ -37,12 +37,13 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import { HeaderComponent } from '@/components/HeaderComponent'
 import { HeaderUsersItem } from '@/components/HeaderUsersItem'
 import { PostItemGit } from '@/components/PostItemGit'
 import { PostsGit } from '@/components/PostsGit'
 import { HeaderTop } from '@/components/HeaderTop'
-import * as api from '../../api'
+
 export default {
   name: 'MyFeeds',
   components: {
@@ -51,80 +52,31 @@ export default {
   data () {
     return {
       /* eslint-disable */
-            users: [
-                {
-                    id: 1,
-                    name: 'Josh1',
-                    img: require('../../assets/avatar-list.png'),
-                },
-                {
-                    id: 2,
-                    name: 'Josh2',
-                    img: require('../../assets/avatar-list.png'),
-                },
-                {
-                    id: 3,
-                    name: 'Josh3',
-                    img: require('../../assets/avatar-list.png'),
-                },
-                {
-                    id: 4,
-                    name: 'Josh4',
-                    img: require('../../assets/avatar-list.png'),
-                },
-                {
-                    id: 5,
-                    name: 'Josh5',
-                    img: require('../../assets/avatar-list.png'),
-                },
-                {
-                    id: 6,
-                    name: 'Josh6',
-                    img: require('../../assets/avatar-list.png'),
-                },
-                {
-                    id: 7,
-                    name: 'Josh7',
-                    img: require('../../assets/avatar-list.png'),
-                },
-                {
-                    id: 8,
-                    name: 'Josh8',
-                    img: require('../../assets/avatar-list.png'),
-                },
-                {
-                    id: 9,
-                    name: 'Josh9',
-                    img: require('../../assets/avatar-list.png'),
-                },
-                {
-                    id: 10,
-                    name: 'Josh10',
-                    img: require('../../assets/avatar-list.png'),
-                },
-            ],
-            posts: []
+
         };
     },
     methods: {
         fetchUserName(user) {
             console.log(user.id)
         },
+        ...mapActions({
+            getTrendings: 'trendings/getTrendings'
+        })
     },
-    async created() {
-        try {
-            const { data } = await api.trendings.getTrendings()
-            this.posts = data.items
-        } catch (e) {
-            console.log(e)
-        }
-
+    computed: {
+        ...mapState({
+            trendings: state => state.trendings.trendings,
+        })
+    },
+    async mounted() {
+        await this.getTrendings()
     }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "../../styles.scss";
+
 .header__users-list {
     display: flex;
     justify-content: space-between;
@@ -134,6 +86,10 @@ export default {
     max-width: 980px;
     width: 100%;
     margin: 0 auto;
+}
+
+.header__users-item {
+    cursor: pointer;
 }
 
 @include small-width {

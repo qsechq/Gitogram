@@ -1,0 +1,20 @@
+.stories__list {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    margin-left: -188px;
+    transition: .4s;
+}
+
+.stories__container {
+    position: relative;
+    height: 660px;
+}
+
+
+.stories__item {
+    &.active {
+        z-index: 1;
+    }
+}

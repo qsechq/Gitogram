@@ -1,14 +1,10 @@
-import { SliderComponent } from './index'
-import { ProgressComponent } from '../ProgressComponent'
-import { ButtonComponent } from '../ButtonComponent'
-import { UserGit } from '../UserGit'
+import { StoriesSlider } from './index'
+import { SliderComponent } from '../SliderComponent'
 
 export default {
-  title: 'SliderComponent',
-  components: SliderComponent,
-  ProgressComponent,
-  ButtonComponent,
-  UserGit,
+  title: 'StoriesSlider',
+  components: StoriesSlider,
+  SliderComponent,
   parameters: {
     backgrounds: {
       default: 'grey',
@@ -22,13 +18,13 @@ export default {
 
 const template = (args) => ({
   components: {
-    SliderComponent, ProgressComponent, ButtonComponent, UserGit
+    StoriesSlider, StoriesSlider
   },
   setup () {
     return { args }
   },
   template: `
-  <SliderComponent v-bind="args"></SliderComponent>
+  <StoriesSlider v-bind="args"></StoriesSlider>
   `
 })
 

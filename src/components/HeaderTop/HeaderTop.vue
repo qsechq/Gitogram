@@ -1,8 +1,8 @@
 <template>
     <div class="x-header-top">
-        <a href="/" class="header__top-logo">
-            <img src="../../assets/Gitogram.svg" alt="logo" class="header__top-img">
-        </a>
+        <router-link :to="{ name: 'feeds' }" class="header__top-logo">
+            <my-icon name="LogoSvg" />
+        </router-link>
         <div class="header__top-wrap">
             <ul class="header__top-list">
                 <li class="header__top-item">

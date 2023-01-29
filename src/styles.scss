@@ -91,6 +91,10 @@ button {
   position: relative;
 }
 
+#logo {
+  width: 174px;
+}
+
 @mixin small-width {
 
   @media screen and (max-width: $small-width) {
@@ -145,4 +149,8 @@ button {
     max-width: 708px;
     padding: 0 10px;
   }
+
+  #logo {
+    width: 100px;
+}
 }

@@ -1,5 +1,5 @@
 <template>
-    <div :class="{active}" class="c-progress">
+    <div :class="{active: active && startProgress}" class="c-progress">
         <div ref="indicator" class="indicator"></div>
     </div>
 </template>
@@ -8,9 +8,12 @@
 export default {
   name: 'ProgressComponent',
   emits: ['onFinish'],
+  props: {
+    active: Boolean,
+    startProgress: Boolean
+  },
   data () {
     return {
-      active: false
     }
   },
   methods: {
@@ -22,8 +25,7 @@ export default {
   mounted () {
     this.$nextTick(() => {
       setTimeout(() => {
-        this.active = true
-      }, 0);
+      }, 0)
     })
     this.$refs.indicator.addEventListener('transitionend', this.emitOnfinish)
     console.log('esmu')

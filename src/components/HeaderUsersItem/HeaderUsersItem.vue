@@ -1,13 +1,13 @@
 <template>
 
-  <a href="#" class="header__users-link" @click.prevent="$emit('onPress')">
+  <div class="header__users-link" @click.prevent="$emit('onPress')">
     <div class="header__users--border">
       <div class="header__users-wrap">
         <avatar-user :avatar="avatar" />
       </div>
     </div>
     <span class="header__users-name">{{ name }}</span>
-  </a>
+  </div>
 
 </template>
 
