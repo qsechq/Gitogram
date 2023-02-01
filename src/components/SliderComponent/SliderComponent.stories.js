@@ -24,7 +24,7 @@ const template = (args) => ({
   components: {
     SliderComponent, ProgressComponent, ButtonComponent, UserGit
   },
-  setup() {
+  setup () {
     return { args }
   },
   template: `
@@ -39,9 +39,9 @@ Default.args = {
   loading: false,
   startProgress: true,
   btnsShow: ['next', 'prev'],
-    data: {
-      name: 'test',
-      avatar: require('../../assets/avatar.png'),
-      id: 1
-    }
+  data: {
+    name: 'test',
+    avatar: require('../../assets/avatar.png'),
+    id: 1
+  }
 }

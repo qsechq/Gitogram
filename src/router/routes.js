@@ -1,9 +1,10 @@
 import { StoriesPage } from '../pages/StoriesPage'
 import { FeedsPage } from '../pages/FeedsPage'
+import { AuthPage } from '../pages/AuthPage'
 
 export default [
   {
-    path: '/feeds',
+    path: '/',
     component: FeedsPage,
     name: 'feeds'
   },
@@ -11,5 +12,10 @@ export default [
     path: '/stories',
     component: StoriesPage,
     name: 'stories'
+  },
+  {
+    path: '/auth',
+    component: AuthPage,
+    name: 'auth'
   }
 ]

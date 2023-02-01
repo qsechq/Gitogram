@@ -4,9 +4,9 @@
             <ul class="stories__list" ref="slider">
                 <li class="stories__item" :class="{active: slideNdx === ndx}" v-for="(trending, ndx) in trendings" :key="trending.id" ref="trending">
                     <slider-component :data="getStory(trending)"
-                        :active="slideNdx === ndx"
+                        :isActive="slideNdx === ndx"
                         :startProgress="readyForProgress"
-                        :loading="slideNdx === ndx && loading"
+                        :isLoading="slideNdx === ndx && isLoading"
                         :btnsShow="activeBtns"
                         @onNextSlide="handleSlide(ndx + 1)"
                         @onPrevSlide="handleSlide(ndx - 1)"
@@ -30,14 +30,15 @@ export default {
   },
   props: {
     initialSlide: {
-      type: Number
+      type: Number,
+      default: 1
     }
   },
   data () {
     return {
       slideNdx: 0,
       sliderPosition: 0,
-      loading: false,
+      isLoading: false,
       btnsShow: true,
       readyForProgress: true
     }
@@ -47,9 +48,15 @@ export default {
       trendings: state => state.trendings.trendings
     }),
     activeBtns () {
-      if (this.btnsShow === false) return []
-      if (this.slideNdx === 0) return ['next']
-      if (this.slideNdx === this.trendings.length - 1) return ['prev']
+      if (this.btnsShow === false) {
+        return []
+      }
+      if (this.slideNdx === 0) {
+        return ['next']
+      }
+      if (this.slideNdx === this.trendings.length - 1) {
+        return ['prev']
+      }
       return ['next', 'prev']
     }
   },
@@ -79,7 +86,7 @@ export default {
       slider.style.transform = `translateX(${this.sliderPosition}px)`
     },
     async loadReadme () {
-      this.loading = true
+      this.isLoading = true
       this.btnsShow = false
       this.readyForProgress = false
       try {
@@ -87,7 +94,7 @@ export default {
       } catch (e) {
         console.log(e)
       } finally {
-        this.loading = false
+        this.isLoading = false
         this.btnsShow = true
         this.readyForProgress = true
       }

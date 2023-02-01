@@ -1,9 +1,9 @@
 <template>
     <div class="x-header-top">
-        <router-link :to="{ name: 'feeds' }" class="header__top-logo">
+        <router-link :to="{ name: 'feeds' }" :class="['header__top-logo', {'header__top-logo--black': blackBackground}]">
             <my-icon name="LogoSvg" />
         </router-link>
-        <div class="header__top-wrap">
+        <div class="header__top-wrap" v-if="this.$route.name !== 'stories'">
             <ul class="header__top-list">
                 <li class="header__top-item">
                     <a href="#" class="header__top-link">
@@ -26,6 +26,9 @@
                 </li>
             </ul>
         </div>
+        <router-link class="header__top-link" :to="{ name: 'feeds' }" v-else>
+            <my-icon class="header__top-close" name="CloseSvg" />
+        </router-link>
     </div>
 </template>
 
@@ -36,6 +39,19 @@ export default {
   name: 'HeaderTop',
   components: {
     MyIcon
+  },
+  data () {
+    return {
+      blackBackground: false
+    }
+  },
+  methods: {
+    colorLogo () {
+      this.$route.name === 'stories' ? this.blackBackground = true : this.blackBackground = false
+    }
+  },
+  mounted () {
+    this.colorLogo()
   }
 }
 </script>

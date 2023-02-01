@@ -11,9 +11,20 @@
     align-items: center;
 }
 
+.header__top-close {
+    color: #fff;
+    width: 22px;    
+}
+
 
 #logo {
     color: #000;
+}
+
+.header__top-logo--black {
+    & #logo {
+        color: #fff;
+    }
 }
 
 .header__top-item {

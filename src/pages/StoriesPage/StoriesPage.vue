@@ -2,13 +2,8 @@
     <div class="wrapper">
         <header class="header">
             <div class="x-container">
-                <div class="header__content">
-                    <router-link class="header__content-link" :to="{ name: 'feeds' }">
-                        <my-icon class="header__content-stories" name="LogoSvg" />
-                    </router-link>
-                    <router-link class="header__content-link" :to="{ name: 'feeds' }">
-                        <my-icon class="header__content-close" name="CloseSvg" />
-                    </router-link>
+                <div class="header__top-content">
+                    <header-top />
                 </div>
             </div>
         </header>
@@ -20,12 +15,12 @@
 
 <script>
 import { StoriesSlider } from '../../components/StoriesSlider'
-import { MyIcon } from '../../icons'
+import { HeaderTop } from '../../components/HeaderTop'
 
 export default {
   name: 'StoriesPage',
   components: {
-    StoriesSlider, MyIcon
+    StoriesSlider, HeaderTop
   }
 }
 </script>

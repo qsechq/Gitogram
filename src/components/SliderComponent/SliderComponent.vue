@@ -1,15 +1,15 @@
 <template>
-  <div :id="data.id" class="x-slider__item" :class="{ active }">
+  <div :id="data.id" class="x-slider__item" :class="{ 'active': isActive }">
     <div class="slider__head">
       <div class="slider__head-progress">
-        <progress-component :active="active" :startProgress="startProgress" @onFinish="$emit('onProgressFinish')" />
+        <progress-component :isActive="isActive" :startProgress="startProgress" @onFinish="$emit('onProgressFinish')" />
       </div>
       <div class="slider__head-user">
         <user-git :name="data.name" :avatar="data.avatar" />
       </div>
     </div>
     <div class="slider__content">
-      <div class="slider__load" v-if="loading">
+      <div class="slider__load" v-if="isLoading">
         <spinner-component  />
       </div>
       <div class="info" v-else>
@@ -22,7 +22,7 @@
         Follow
       </button-component>
     </div>
-    <template v-if="active">
+    <template v-if="isActive">
       <button v-if="btnsShow.includes('next')" class="btn btn-next" @click="$emit('onNextSlide')">
         <span class="icon">
           <my-icon name="ArrowSlideSvg" />
@@ -57,16 +57,8 @@ export default {
     MyIcon
   },
   props: {
-    // name: {
-    //   type: String,
-    //   required: true
-    // },
-    // avatar: {
-    //   type: String,
-    //   required: true
-    // },
-    active: Boolean,
-    loading: Boolean,
+    isActive: Boolean,
+    isLoading: Boolean,
     startProgress: Boolean,
     btnsShow: {
       type: Array,
@@ -75,7 +67,9 @@ export default {
         return value.every((item) => item === 'next' || item === 'prev')
       },
       initialSlide: {
-        type: Number
+        type: Number,
+        default: 1,
+        required: true
       }
     },
     data: {

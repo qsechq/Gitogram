@@ -1,8 +1,8 @@
 <template>
     <button :class="['c-button', `theme-green`, {'hover-text': withHoverText}]" :data-hover-text="hoverText">
-        <span class="btn__inner">
+        <div class="btn__inner">
             <slot></slot>
-        </span>
+        </div>
     </button>
 </template>
 
@@ -16,7 +16,6 @@ export default {
   },
   computed: {
     withHoverText () {
-      console.log(this.hoverText?.length)
       return this.hoverText?.length
     }
   }
