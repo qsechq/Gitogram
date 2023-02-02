@@ -61,7 +61,7 @@ export default {
         },
         ...mapActions({
             getTrendings: 'trendings/getTrendings'
-        })
+        }),
     },
     computed: {
         ...mapState({

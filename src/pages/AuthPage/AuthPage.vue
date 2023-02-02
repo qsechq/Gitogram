@@ -10,7 +10,7 @@
                     This is our digital world.
                 </div>
                 <div class="auth__right-btn">
-                    <button-component data-hover-text="Authorize with github" class="btn__auth">
+                    <button-component @click="getCode" data-hover-text="Authorize with github" class="btn__auth">
                         <span>Authorize with github</span>
                         <div class="auth__btn-logo">
                             <my-icon name="GhLogoSvg" />
@@ -28,11 +28,32 @@
 <script>
 import { MyIcon } from '../../icons'
 import { ButtonComponent } from '../../components/ButtonComponent'
+import env from '../../../env'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'AuthPage',
   components: {
     MyIcon, ButtonComponent
+  },
+  methods: {
+    getCode () {
+      const githubAuthApi = 'https://github.com/login/oauth/authorize'
+      const params = new URLSearchParams()
+      params.append('client_id', env.clientId)
+      params.append('scope', 'repo:status read:user')
+      window.location.href = `${githubAuthApi}?${params}`
+    },
+    ...mapActions({
+      getToken: 'auth/getToken',
+      getUserData: 'userData/getUserData'
+    })
+  },
+  async created () {
+    await this.getToken()
+    if (localStorage.getItem("token")) {
+      this.$router.replace({ name: 'feeds' })
+    }
   }
 }
 </script>

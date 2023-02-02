@@ -14,7 +14,7 @@
                 </li>
                 <li class="header__top-item">
                     <a href="#" class="header__top-link">
-                        <img src="../../assets/avatar.png" alt="home" class="header__top-avatar">
+                        <img :src="userAvatar.avatar_url" alt="home" class="header__top-avatar">
                     </a>
                 </li>
                 <li class="header__top-item">
@@ -34,6 +34,7 @@
 
 <script>
 import { MyIcon } from '../../icons'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'HeaderTop',
@@ -48,10 +49,19 @@ export default {
   methods: {
     colorLogo () {
       this.$route.name === 'stories' ? this.blackBackground = true : this.blackBackground = false
-    }
+    },
+    ...mapActions({
+      getUserData: 'userData/getUserData'
+    })
   },
-  mounted () {
+  async mounted () {
     this.colorLogo()
+    await this.getUserData()
+  },
+  computed: {
+    ...mapState({
+      userAvatar: state => state.userData.userData
+    })
   }
 }
 </script>

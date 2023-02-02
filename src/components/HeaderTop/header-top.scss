@@ -42,6 +42,12 @@
     }
 }
 
+.header__top-avatar {
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+}
+
 @include phones {
     .header__top-logo {
         width: 100px;
