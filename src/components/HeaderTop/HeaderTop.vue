@@ -18,7 +18,7 @@
                     </a>
                 </li>
                 <li class="header__top-item">
-                    <a href="#" class="header__top-link">
+                    <a @click.prevent="logout" href="#" class="header__top-link">
                         <div class="header__top-icon">
                             <my-icon name="LogoutSvg" />
                         </div>
@@ -51,7 +51,8 @@ export default {
       this.$route.name === 'stories' ? this.blackBackground = true : this.blackBackground = false
     },
     ...mapActions({
-      getUserData: 'userData/getUserData'
+      getUserData: 'userData/getUserData',
+      logout: 'auth/logout'
     })
   },
   async mounted () {

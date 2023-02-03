@@ -20,8 +20,11 @@
     <div class="posts">
         <div class="container">
             <ul class="posts__list">
-                <posts-git v-for="post in trendings" :key="post.id" :id="post.id" :name="post.owner.login"
-                    :avatar="post.owner.avatar_url" :date="post.created_at">
+                <posts-git v-for="post in starred" :key="post.id" :id="post.id" :name="post.owner.login"
+                    :avatar="post.owner.avatar_url" :date="post.created_at" @loadIssues="getIssues({
+                id: post.id,
+                owner: post.owner.login,
+                repo: post.name })" :issues="post.issues ? post.issues : []">
                     <template #post>
                         <div class="post__item-content">
                             <div class="post__content">
@@ -60,16 +63,20 @@ export default {
             console.log(user.id)
         },
         ...mapActions({
-            getTrendings: 'trendings/getTrendings'
+            getTrendings: 'trendings/getTrendings',
+            getStarredRepos: 'starred/getStarredRepos',
+            getIssues: 'starred/getIssues'
         }),
     },
     computed: {
         ...mapState({
             trendings: state => state.trendings.trendings,
+            starred: state => state.starred.starred,
         })
     },
     async mounted() {
         await this.getTrendings()
+        await this.getStarredRepos()
     }
 }
 </script>

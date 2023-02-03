@@ -7,11 +7,11 @@
       <slot name="post"></slot>
     </div>
     <div class="post__item-toggler">
-      <toggler-view @onToggle="onToggle" />
+      <toggler-view @click="onToggle" />
     </div>
     <div class="post__comments" v-show="isShow">
       <ul class="post__comments-list">
-        <li class="post__comments-item" v-for="n in 2" :key="n">
+        <li class="post__comments-item" v-for="issue in issues" :key="issue.id">
           <comment-item  />
         </li>
       </ul>
@@ -34,6 +34,7 @@ export default {
   components: {
     UserGit, TogglerView, CommentItem
   },
+  emits: ['loadIssues'],
   props: {
     name: {
       type: String,
@@ -46,6 +47,10 @@ export default {
     date: {
       type: String,
       required: true
+    },
+    issues: {
+      type: Array,
+      required: true
     }
   },
   data() {
@@ -56,6 +61,7 @@ export default {
   methods: {
     onToggle(isActive) {
       this.isShow = isActive
+      this.$emit('loadIssues')
     }
   },
   computed: {

@@ -18,8 +18,11 @@
       </div>
     </div>
     <div class="slider__button">
-      <button-component data-hover-text="Unfollow">
-        Follow
+      <button-component class="button--slider" @click="$emit(data.following.status ? 'onUnFollow' : 'onFollow', data.id)" :theme="data.following.status ? 'grey' : 'green'">
+        <div class="spinner__wrap" v-if="data.following.isLoading">
+          <spinner-component  class="spinner__btn"/>
+        </div>
+        <span v-else>{{ data.following.status ? 'Unfollow': 'Follow' }}</span>
       </button-component>
     </div>
     <template v-if="isActive">
@@ -47,7 +50,7 @@ import { MyIcon } from '../../icons'
 
 export default {
   name: 'SliderComponent',
-  emits: ['onProgressFinish', 'onNextSlide', 'onPrevSlide'],
+  emits: ['onProgressFinish', 'onNextSlide', 'onPrevSlide', 'onFollow', 'onUnFollow'],
   components: {
     ProgressComponent,
     ButtonComponent,

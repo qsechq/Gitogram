@@ -8,6 +8,8 @@
                         :startProgress="readyForProgress"
                         :isLoading="slideNdx === ndx && isLoading"
                         :btnsShow="activeBtns"
+                        @onFollow="starRepo"
+                        @onUnFollow="unStarRepo"
                         @onNextSlide="handleSlide(ndx + 1)"
                         @onPrevSlide="handleSlide(ndx - 1)"
                         @onProgressFinish="handleSlide(ndx + 1)"
@@ -63,7 +65,9 @@ export default {
   methods: {
     ...mapActions({
       getTrendings: 'trendings/getTrendings',
-      fetchReadme: 'trendings/fetchReadme'
+      fetchReadme: 'trendings/fetchReadme',
+      starRepo: 'trendings/starRepo',
+      unStarRepo: 'trendings/unStarRepo'
     }),
     async fetchReadmeForActive () {
       const { id, owner, name } = this.trendings[this.slideNdx]
@@ -74,7 +78,8 @@ export default {
         id: obj.id,
         avatar: obj.owner.avatar_url,
         name: obj.owner.login,
-        content: obj.readme
+        content: obj.readme,
+        following: obj.following
       }
     },
     moveSlider (slideNdx) {

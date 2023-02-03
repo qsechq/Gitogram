@@ -1,5 +1,5 @@
 <template>
-    <button :class="['c-button', `theme-green`, {'hover-text': withHoverText}]" :data-hover-text="hoverText">
+    <button :class="['c-button', `${theme}`, {'hover-text': withHoverText, theme:themeColor}]" :data-hover-text="hoverText">
         <div class="btn__inner">
             <slot></slot>
         </div>
@@ -12,6 +12,10 @@ export default {
   props: {
     hoverText: {
       type: String
+    },
+    theme: {
+      type: String,
+      required: true
     }
   },
   computed: {

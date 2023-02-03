@@ -41,7 +41,7 @@ export default {
       const githubAuthApi = 'https://github.com/login/oauth/authorize'
       const params = new URLSearchParams()
       params.append('client_id', env.clientId)
-      params.append('scope', 'repo:status read:user')
+      params.append('scope', 'repo user')
       window.location.href = `${githubAuthApi}?${params}`
     },
     ...mapActions({
@@ -51,7 +51,7 @@ export default {
   },
   async created () {
     await this.getToken()
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem('token')) {
       this.$router.replace({ name: 'feeds' })
     }
   }

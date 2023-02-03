@@ -12,6 +12,10 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    logout () {
+      localStorage.removeItem('token')
+      window.location.reload()
     }
   }
 }
