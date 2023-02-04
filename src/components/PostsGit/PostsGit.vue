@@ -7,12 +7,20 @@
       <slot name="post"></slot>
     </div>
     <div class="post__item-toggler">
-      <toggler-view @click="onToggle" />
+      <toggler-view @onToggle="onToggle" />
     </div>
     <div class="post__comments" v-show="isShow">
-      <ul class="post__comments-list">
-        <li class="post__comments-item" v-for="issue in issues" :key="issue.id">
-          <comment-item  />
+      <div class="post__placeholder" v-if="isLoading">
+        <placeholder-component :paragraphs="5"/>
+      </div>
+      <ul class="post__comments-list" v-else>
+        <li class="post__comments-item" v-if="issues.length === 0">
+          <div class="test">
+            repository does not have issues
+          </div>
+        </li>
+        <li class="post__comments-item" v-for="issue in issues" :key="issue.id" v-else>
+          <comment-item :body="issue.body" :user="issue.user.login"/>
         </li>
       </ul>
     </div>
@@ -28,11 +36,12 @@ import { UserGit } from '../UserGit'
 import { TogglerView } from '../TogglerView'
 import { CommentItem } from '../CommentItem'
 import { months } from '../../replaceDate/months'
+import { PlaceholderComponent } from "../PlaceholderComponent";
 
 export default {
   name: 'PostsGit',
   components: {
-    UserGit, TogglerView, CommentItem
+    UserGit, TogglerView, CommentItem, PlaceholderComponent
   },
   emits: ['loadIssues'],
   props: {
@@ -51,6 +60,10 @@ export default {
     issues: {
       type: Array,
       required: true
+    },
+    isLoading: {
+      type: Boolean,
+      required: true
     }
   },
   data() {
@@ -61,13 +74,13 @@ export default {
   methods: {
     onToggle(isActive) {
       this.isShow = isActive
-      this.$emit('loadIssues')
+      isActive ? this.$emit('loadIssues') : null
     }
   },
   computed: {
-    formatDate () {
+    formatDate() {
       const date = this.date.split(/-|T/).splice(0, 3).reverse()
-      const formatDate = `${date[0]} ${months[date[1] - 1] }  `
+      const formatDate = `${date[0]} ${months[date[1] - 1]}  `
       return formatDate
     }
   }

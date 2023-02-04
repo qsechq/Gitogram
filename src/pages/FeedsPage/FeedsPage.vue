@@ -21,10 +21,10 @@
         <div class="container">
             <ul class="posts__list">
                 <posts-git v-for="post in starred" :key="post.id" :id="post.id" :name="post.owner.login"
-                    :avatar="post.owner.avatar_url" :date="post.created_at" @loadIssues="getIssues({
+                    :avatar="post.owner.avatar_url" :date="post.created_at" @loadIssues.once="getIssues({
                 id: post.id,
                 owner: post.owner.login,
-                repo: post.name })" :issues="post.issues ? post.issues : []">
+                repo: post.name })" :issues="post.issues ? post.issues : []" :isLoading="isLoading">
                     <template #post>
                         <div class="post__item-content">
                             <div class="post__content">
@@ -72,6 +72,7 @@ export default {
         ...mapState({
             trendings: state => state.trendings.trendings,
             starred: state => state.starred.starred,
+            isLoading: state => state.starred.isLoading
         })
     },
     async mounted() {

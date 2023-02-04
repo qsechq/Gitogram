@@ -1,5 +1,5 @@
 <template>
-    <p><span class="post__comments-nick">joshua_l</span>Enable performance measuring in production, at the user's request</p>
+    <p><span class="post__comments-nick">{{ user }}</span>{{ body }}</p>
 </template>
 
 <script>
@@ -7,7 +7,14 @@
 export default {
   name: 'CommentItem',
   props: {
-
+    user: {
+      type: String,
+      required: true
+    },
+    body: {
+      type: String,
+      required: true
+    }
   }
 
 }

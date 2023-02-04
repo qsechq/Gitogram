@@ -1,5 +1,5 @@
 <template>
-    <button :class="['c-button', `${theme}`, {'hover-text': withHoverText, theme:themeColor}]" :data-hover-text="hoverText">
+    <button :class="['c-button', `${theme}`, {'hover-text': withHoverText}]" :data-hover-text="hoverText">
         <div class="btn__inner">
             <slot></slot>
         </div>
@@ -15,7 +15,7 @@ export default {
     },
     theme: {
       type: String,
-      required: true
+      default: 'green'
     }
   },
   computed: {

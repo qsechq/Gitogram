@@ -91,6 +91,12 @@ button {
   position: relative;
 }
 
+.post__placeholder {
+  & .mainpic {
+    display: none;
+  }
+}
+
 #logo {
   width: 174px;
 }

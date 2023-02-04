@@ -3,7 +3,8 @@ import * as api from '../../api'
 export default {
   namespaced: true,
   state: {
-    starred: []
+    starred: [],
+    isLoading: false
   },
   getters: {
     getStarredById: (state) => (id) => state.starred.find((item) => item.id === id)
@@ -11,6 +12,9 @@ export default {
   mutations: {
     SET_STARRED (state, payload) {
       state.starred = payload
+    },
+    SET_LOADING (state, payload) {
+      state.isLoading = payload
     },
     SET_ISSUE (state, payload) {
       state.starred = state.starred.map(item => {
@@ -32,11 +36,13 @@ export default {
     },
     async getIssues ({ commit }, { id, owner, repo }) {
       try {
+        commit('SET_LOADING', true)
         const { data } = await api.issues.getIssues({ owner, repo })
-        console.log(data)
         commit('SET_ISSUE', { id, issues: data })
       } catch (e) {
         console.log(e)
+      } finally {
+        commit('SET_LOADING', false)
       }
     }
   }
