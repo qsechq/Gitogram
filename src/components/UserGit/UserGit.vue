@@ -3,7 +3,11 @@
     <div class="avatar__wrap">
       <avatar-user :avatar="avatar" alt="avatar" class="post__item-avatar" />
     </div>
-    <span class="post__item-name">{{ name }}</span>
+    <div class="user__git-info">
+      <span class="post__item-name">{{ name }}</span>
+      <slot name="info"></slot>
+      <slot name="type"></slot>
+    </div>
   </div>
 </template>
 

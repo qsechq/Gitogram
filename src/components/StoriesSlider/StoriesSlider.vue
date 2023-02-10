@@ -2,7 +2,7 @@
     <div class="c-stories-slider">
         <div class="stories__container">
             <ul class="stories__list" ref="slider">
-                <li class="stories__item" :class="{active: slideNdx === ndx}" v-for="(trending, ndx) in trendings" :key="trending.id" ref="trending">
+                <li class="stories__item" :class="{active: slideNdx === ndx}" v-for="(trending, ndx) in getUnstarredOnly" :key="trending.id" ref="trending">
                     <slider-component :data="getStory(trending)"
                         :isActive="slideNdx === ndx"
                         :startProgress="readyForProgress"
@@ -23,7 +23,7 @@
 
 <script>
 import { SliderComponent } from '../SliderComponent'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'StoriesSlider',
@@ -49,6 +49,7 @@ export default {
     ...mapState({
       trendings: state => state.trendings.trendings
     }),
+    ...mapGetters(['getUnstarredOnly']),
     activeBtns () {
       if (this.btnsShow === false) {
         return []
@@ -67,7 +68,8 @@ export default {
       getTrendings: 'trendings/getTrendings',
       fetchReadme: 'trendings/fetchReadme',
       starRepo: 'trendings/starRepo',
-      unStarRepo: 'trendings/unStarRepo'
+      unStarRepo: 'trendings/unStarRepo',
+      getStarredRepos: 'starred/getStarredRepos'
     }),
     async fetchReadmeForActive () {
       const { id, owner, name } = this.trendings[this.slideNdx]
@@ -116,6 +118,7 @@ export default {
     }
     await this.getTrendings()
     await this.loadReadme()
+    await this.getStarredRepos()
   }
 
 }

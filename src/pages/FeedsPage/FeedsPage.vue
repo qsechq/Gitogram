@@ -9,7 +9,7 @@
             <template #content v-if="trendings.length">
                 <div class="header__users">
                     <ul class="header__users-list">
-                        <li class="header__users-item" v-for="user in trendings" :key="user.id" :id="user.id">
+                        <li class="header__users-item" v-for="user in getUnstarredOnly" :key="user.id" :id="user.id">
                                 <header-users-item :avatar="user.owner.avatar_url" :name="user.owner.login" @onPress="$router.push({name: 'stories', params: { initialSlide: user.id } })"/>
                         </li>
                     </ul>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 import { HeaderComponent } from '@/components/HeaderComponent'
 import { HeaderUsersItem } from '@/components/HeaderUsersItem'
 import { PostItemGit } from '@/components/PostItemGit'
@@ -73,7 +73,8 @@ export default {
             trendings: state => state.trendings.trendings,
             starred: state => state.starred.starred,
             isLoading: state => state.starred.isLoading
-        })
+        }),
+        ...mapGetters(['getUnstarredOnly'])
     },
     async mounted() {
         await this.getTrendings()

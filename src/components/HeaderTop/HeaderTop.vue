@@ -13,9 +13,9 @@
                     </a>
                 </li>
                 <li class="header__top-item">
-                    <a href="#" class="header__top-link">
-                        <img :src="userAvatar.avatar_url" alt="home" class="header__top-avatar">
-                    </a>
+                  <router-link class="header__top-link" :to="{ name:'profile' }">
+                    <img :src="userAvatar.avatar_url" alt="home" class="header__top-avatar">
+                  </router-link>
                 </li>
                 <li class="header__top-item">
                     <a @click.prevent="logout" href="#" class="header__top-link">

@@ -6,6 +6,12 @@
     border-radius: 50%;
 }
 
+.user__git-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .post__item-name {
     font-weight: 700;
     font-size: 18px;

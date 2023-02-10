@@ -97,6 +97,22 @@ button {
   }
 }
 
+.profile {
+  & .header__users-avatar {
+    width: 90px;
+    height: 90px;
+  }
+  &__right-item {
+    .header__users-avatar {
+      width: 72px;
+      height: 72px;
+    }
+  }
+  & .user__git-info {
+    align-items: flex-start;
+  }
+}
+
 #logo {
   width: 174px;
 }
