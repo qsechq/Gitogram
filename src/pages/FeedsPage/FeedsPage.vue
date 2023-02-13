@@ -21,10 +21,10 @@
         <div class="container">
             <ul class="posts__list">
                 <posts-git v-for="post in starred" :key="post.id" :id="post.id" :name="post.owner.login"
-                    :avatar="post.owner.avatar_url" :date="post.created_at" @loadIssues.once="getIssues({
+                    :avatar="post.owner.avatar_url" :date="post.created_at" @getIssuess.once="getIssues({
                 id: post.id,
                 owner: post.owner.login,
-                repo: post.name })" :issues="post.issues ? post.issues : []" :isLoading="isLoading">
+                repo: post.name })" :issues="post.issues ? post.issues : undefined" :isLoading="isLoading">
                     <template #post>
                         <div class="post__item-content">
                             <div class="post__content">

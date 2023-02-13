@@ -29,21 +29,18 @@
       <div class="profile__right">
         <div class="profile__right-wrap">
           <h2 class="profile__title">Following</h2>
-          <div class="profile__right-count">{{ user.public_repos }}</div>
+          <div class="profile__right-count">{{ starred.length }}</div>
         </div>
           <ul class="profile__right-list">
-            <li class="profile__right-item" v-for="user in starred" :key="user.id">
+            <li class="profile__right-item" v-for="item in starred" :key="item.id">
               <div class="user__git-wr">
-                <user-git :name="user.owner.login" :avatar="user.owner.avatar_url">
-                <template #type>
-                  <div class="user__git-type">{{ user.owner.type }}</div>
-                </template>
-              </user-git>
-              </div>
-              <div class="profile__item-btn">
-                <button-component :theme="'grey'" @click="unStarRepo(user.id)">
-                  <span>Unfollow</span>
-                </button-component>
+                <subscribe-component
+                :name="item.owner.login"
+                :id="item.id"
+                :avatar="item.owner.avatar_url"
+                :type="item.owner.type"
+                @onUnFollow="unFollow(item)"
+                />
               </div>
             </li>
           </ul>
@@ -55,28 +52,32 @@
 <script>
 import { HeaderTop } from '../../components/HeaderTop'
 import { HeaderComponent } from '../../components/HeaderComponent'
+import { SubscribeComponent } from '../../components/SubscribeComponent'
 import { UserGit } from '../../components/UserGit'
-import { ButtonComponent } from '../../components/ButtonComponent'
 
 import useUser from '../../components/composables/useUser.js'
 import useRepos from '../../components/composables/useRepos.js'
 import useStarred from '../../components/composables/useStarred.js'
-import useUnstar from '../../components/composables/useUnstar.js'
+import { useStore } from 'vuex'
 export default {
   name: 'WatchersPage',
   components: {
-    HeaderTop, HeaderComponent, UserGit, ButtonComponent
+    HeaderTop, HeaderComponent, SubscribeComponent, UserGit
   },
   setup () {
     const { user } = useUser()
     const { repos } = useRepos()
     const { starred } = useStarred()
-    const { unStarRepo } = useUnstar()
+    const { dispatch } = useStore()
+
+    const unFollow = async (repo) => {
+      await dispatch('starred/unFollow', repo.id)
+    }
     return {
       user,
       repos,
       starred,
-      unStarRepo
+      unFollow
     }
   }
 }

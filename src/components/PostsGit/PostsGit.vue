@@ -6,23 +6,8 @@
     <div class="c-post__item-content">
       <slot name="post"></slot>
     </div>
-    <div class="post__item-toggler">
-      <toggler-view @onToggle="onToggle" />
-    </div>
-    <div class="post__comments" v-show="isShow">
-      <div class="post__placeholder" v-if="isLoading">
-        <placeholder-component :paragraphs="5"/>
-      </div>
-      <ul class="post__comments-list" v-else>
-        <li class="post__comments-item" v-if="issues.length === 0">
-          <div class="test">
-            repository does not have issues
-          </div>
-        </li>
-        <li class="post__comments-item" v-for="issue in issues" :key="issue.id" v-else>
-          <comment-item :body="issue.body" :user="issue.user.login"/>
-        </li>
-      </ul>
+    <div class="c-issues">
+      <issues-component :issues="issues" :isLoading="isLoading" @loadIssues="$emit('getIssuess')"/>
     </div>
     <div class="post__date">
       {{ formatDate }}
@@ -33,17 +18,14 @@
 <script>
 /* eslint-disable */
 import { UserGit } from '../UserGit'
-import { TogglerView } from '../TogglerView'
-import { CommentItem } from '../CommentItem'
 import { months } from '../../replaceDate/months'
-import { PlaceholderComponent } from "../PlaceholderComponent";
+import { issuesComponent } from '../issuesComponent'
 
 export default {
   name: 'PostsGit',
   components: {
-    UserGit, TogglerView, CommentItem, PlaceholderComponent
+    UserGit, issuesComponent
   },
-  emits: ['loadIssues'],
   props: {
     name: {
       type: String,
@@ -59,7 +41,7 @@ export default {
     },
     issues: {
       type: Array,
-      required: true
+      default: 0
     },
     isLoading: {
       type: Boolean,
@@ -69,12 +51,6 @@ export default {
   data() {
     return {
       isShow: false
-    }
-  },
-  methods: {
-    onToggle(isActive) {
-      this.isShow = isActive
-      isActive ? this.$emit('loadIssues') : null
     }
   },
   computed: {

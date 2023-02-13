@@ -16,12 +16,26 @@ export default {
     SET_LOADING (state, payload) {
       state.isLoading = payload
     },
+    DELETE_STAR (state, payload) {
+      const ndxToDelete = state.starred.indexOf(payload)
+      state.starred.splice(ndxToDelete, 1)
+    },
     SET_ISSUE (state, payload) {
       state.starred = state.starred.map(item => {
         if (payload.id === item.id) {
           item.issues = payload.issues
         }
         return item
+      })
+    },
+    SET_FOLLOWING: (state, payload) => {
+      state.starred = state.starred.map((repo) => {
+        if (payload.id === repo.id) {
+          repo.following = {
+            ...payload.starred
+          }
+        }
+        return repo
       })
     }
   },
@@ -43,6 +57,15 @@ export default {
         console.log(e)
       } finally {
         commit('SET_LOADING', false)
+      }
+    },
+    async unFollow ({ commit, getters }, id) {
+      const repo = getters.getStarredById(id)
+      try {
+        await api.starred.unStarRepo({ owner: repo.owner.login, repo: repo.name })
+        commit('DELETE_STAR', repo)
+      } catch (error) {
+        console.log(error)
       }
     }
   }

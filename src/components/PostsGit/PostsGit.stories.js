@@ -1,14 +1,12 @@
 import { PostsGit } from './index'
 import { UserGit } from '../UserGit'
 import { PostItemGit } from '../PostItemGit'
-import { TogglerView } from '../TogglerView'
-import { CommentItem } from '../CommentItem'
+import { issuesComponent } from '../issuesComponent'
 
 export default {
   title: 'PostsGit',
   component: UserGit,
-  TogglerView,
-  CommentItem,
+  issuesComponent,
   PostsGit,
   PostItemGit
 }

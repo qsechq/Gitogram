@@ -4,10 +4,11 @@ import { computed, onMounted } from 'vue'
 export default () => {
   const { dispatch, state } = useStore()
   const starred = computed(() => state.starred.starred)
-  onMounted(() => {
+  const filterStarred = onMounted(() => {
     dispatch('starred/getStarredRepos')
   })
   return {
-    starred
+    starred,
+    filterStarred
   }
 }

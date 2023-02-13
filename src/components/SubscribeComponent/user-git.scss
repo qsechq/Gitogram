@@ -1,0 +1,33 @@
+.profile__right-link {
+    font-size: 12px;
+    line-height: 15px;
+    color: #31AE54;
+    text-decoration-line: underline;
+}
+
+.profile__right-wrap {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.profile__right-count {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    color: #9E9E9E;
+}
+
+.user__git-type {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #9E9E9E;
+    padding-top: 6px;
+}
+
+.user__git-wr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

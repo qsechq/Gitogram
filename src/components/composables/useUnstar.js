@@ -3,7 +3,7 @@ import { onMounted } from 'vue'
 
 export default () => {
   const { dispatch } = useStore()
-  const unStarRepo =   onMounted(() => {
+  const unStarRepo = onMounted(() => {
     dispatch('trendings/unStarRepo')
   })
 
