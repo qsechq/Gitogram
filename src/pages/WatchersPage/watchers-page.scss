@@ -38,6 +38,7 @@
         & .profile__info-count {
             font-weight: 700;
             font-size: 14px;
+            color: #000;
             line-height: 21px;
         }
     }
@@ -48,6 +49,10 @@
     line-height: 15px;
     color: #31AE54;
     text-decoration-line: underline;
+}
+
+.profile__left-link {
+    color: #000;
 }
 
 .profile__right-wrap {

@@ -15,7 +15,9 @@
             <template #info>
               <div class="profile__info">
                 <div class="profile__info-left">
-                  <span class="profile__info-count">{{ user.public_repos }}</span> reposts
+                  <router-link :to="{ name: 'profile' }"  class="profile__left-link">
+                    <span class="profile__info-count">{{ user.public_repos }}</span> reposts
+                  </router-link>
                 </div>
                 <div class="profile__info-right">
                   {{ starred.length }} <router-link :to="{ name: 'feeds' }"
@@ -55,9 +57,9 @@ import { HeaderComponent } from '../../components/HeaderComponent'
 import { SubscribeComponent } from '../../components/SubscribeComponent'
 import { UserGit } from '../../components/UserGit'
 
-import useUser from '../../components/composables/useUser.js'
-import useRepos from '../../components/composables/useRepos.js'
-import useStarred from '../../components/composables/useStarred.js'
+import useUser from '../../composables/useUser.js'
+import useRepos from '../../composables/useRepos.js'
+import useStarred from '../../composables/useStarred.js'
 import { useStore } from 'vuex'
 export default {
   name: 'WatchersPage',

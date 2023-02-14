@@ -9,7 +9,7 @@
         </div>
         <div class="comment__container" v-else>
             <ul class="post__comments-list">
-                <li class="post__comments-item" v-if="issues === 0">
+                <li class="post__comments-item" v-if="issues.length === 0">
                     <div class="test">
                         repository does not have issues
                     </div>

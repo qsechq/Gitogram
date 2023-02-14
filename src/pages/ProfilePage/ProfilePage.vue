@@ -49,9 +49,9 @@ import { HeaderTop } from '../../components/HeaderTop'
 import { HeaderComponent } from '../../components/HeaderComponent'
 import { UserGit } from '../../components/UserGit'
 import { PostItemGit } from '@/components/PostItemGit'
-import useUser from '../../components/composables/useUser.js'
-import useRepos from '../../components/composables/useRepos.js'
-import useStarred from '../../components/composables/useStarred.js'
+import useUser from '../../composables/useUser.js'
+import useRepos from '../../composables/useRepos.js'
+import useStarred from '../../composables/useStarred.js'
 
 export default {
   name: 'ProfilePage',

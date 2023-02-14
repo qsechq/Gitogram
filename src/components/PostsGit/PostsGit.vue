@@ -18,7 +18,7 @@
 <script>
 /* eslint-disable */
 import { UserGit } from '../UserGit'
-import { months } from '../../replaceDate/months'
+import { months } from '../../helpers/months'
 import { issuesComponent } from '../issuesComponent'
 
 export default {
